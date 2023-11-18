@@ -1,5 +1,7 @@
-import React from "react";
+"useClient";
+import React, { useState } from "react";
 import ProjectCard from "./ProjectCard";
+import ProjectTag from "./ProjectTag";
 
 const projectsData = [
   {
@@ -46,6 +48,12 @@ const projectsData = [
 ];
 
 const ProjectSection = () => {
+  const [tag, setTag] = useState("All");
+
+  const handleTagClick = (tag) => {
+    setTag(tag);
+  };
+
   return (
     <>
       <h2>Projects</h2>
