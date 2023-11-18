@@ -1,4 +1,5 @@
-"useClient";
+"use client";
+
 import React, { useState } from "react";
 import ProjectCard from "./ProjectCard";
 import ProjectTag from "./ProjectTag";
@@ -60,17 +61,17 @@ const ProjectSection = () => {
       <div className="text-white flex flex-row justify-center items-center gap-2 py-6">
         <ProjectTag
           onClick={handleTagChange}
-          tag="All"
+          name="All"
           isSelected={tag === "All"}
         />
         <ProjectTag
           onClick={handleTagChange}
-          tag="Web"
+          name="Web"
           isSelected={tag === "Web"}
         />
         <ProjectTag
           onClick={handleTagChange}
-          tag="Ai"
+          name="Ai"
           isSelected={tag === "Ai"}
         />
       </div>
