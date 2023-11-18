@@ -50,7 +50,7 @@ const projectsData = [
 const ProjectSection = () => {
   const [tag, setTag] = useState("All");
 
-  const handleTagClick = (tag) => {
+  const handleTagChange = (tag) => {
     setTag(tag);
   };
 
@@ -58,15 +58,21 @@ const ProjectSection = () => {
     <>
       <h2>Projects</h2>
       <div className="text-white flex flex-row justify-center items-center gap-2 py-6">
-        <button className="rounded-full border-2 border-red-600 hover:border-white px-6 py-3 text-xl cursor-pointer">
-          All
-        </button>
-        <button className="rounded-full border-2 border-slate-600 hover:border-white px-6 py-3 text-xl cursor-pointer">
-          Web
-        </button>
-        <button className="rounded-full border-2 border-slate-600 hover:border-white px-6 py-3 text-xl cursor-pointer">
-          Ai
-        </button>
+        <ProjectTag
+          onClick={handleTagChange}
+          tag="All"
+          isSelected={tag === "All"}
+        />
+        <ProjectTag
+          onClick={handleTagChange}
+          tag="Web"
+          isSelected={tag === "Web"}
+        />
+        <ProjectTag
+          onClick={handleTagChange}
+          tag="Ai"
+          isSelected={tag === "Ai"}
+        />
       </div>
       <div className="grid md:grid-cols-3 gap-8 md:gap-12">
         {projectsData.map((project) => (
