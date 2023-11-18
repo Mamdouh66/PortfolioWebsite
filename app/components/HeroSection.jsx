@@ -38,14 +38,14 @@ const HeroSection = () => {
               Hire Me
             </button>
             <button className="px-0.5 py-0.5 w-full sm:w-fit rounded-full bg-gradient-to-br from-red-600 via-rose-500 to-pink-400  bg-transparent hover:bg-[#343434] text-white mt-4">
-              <span className="block bg-[#303030] hover:bg-[#444242] rounded-full px-5 py-2">
+              <span className="block bg-[#252525] hover:bg-[#444242] rounded-full px-5 py-2">
                 Download CV
               </span>
             </button>
           </div>
         </div>
         <div className="col-span-5 place-self-center mt-4 lg:mt-0">
-          <div className="rounded-full bg-[#343434] w-[250px] h-[250px] lg:w-[350px] lg:h-[350px] relative">
+          <div className="rounded-full bg-[#252525] w-[250px] h-[250px] lg:w-[350px] lg:h-[350px] relative">
             <Image
               src="/MyMemoji.png"
               alt="Mamdouh's Memoji"
