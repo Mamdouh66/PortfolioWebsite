@@ -55,6 +55,10 @@ const ProjectSection = () => {
     setTag(tag);
   };
 
+  const filteredProjects = projectsData.filter((project) =>
+    project.tags.includes(tag)
+  );
+
   return (
     <>
       <h2>Projects</h2>
@@ -76,7 +80,7 @@ const ProjectSection = () => {
         />
       </div>
       <div className="grid md:grid-cols-3 gap-8 md:gap-12">
-        {projectsData.map((project) => (
+        {filteredProjects.map((project) => (
           <ProjectCard
             key={project.id}
             title={project.title}
