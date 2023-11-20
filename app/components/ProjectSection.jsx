@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import ProjectCard from "./ProjectCard";
 import ProjectTag from "./ProjectTag";
+import { motion } from "framer-motion";
 
 const projectsData = [
   {
@@ -60,8 +61,12 @@ const ProjectSection = () => {
   );
 
   return (
-    <>
-      <h2 className="font-code">Projects</h2>
+    <motion.section
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
+      <h2 className="font-code text-3xl font-extrabold mt-12 ">Projects</h2>
       <div className="text-white font-code flex flex-row justify-center items-center gap-2 py-6">
         <ProjectTag
           onClick={handleTagChange}
@@ -92,7 +97,7 @@ const ProjectSection = () => {
           />
         ))}
       </div>
-    </>
+    </motion.section>
   );
 };
 

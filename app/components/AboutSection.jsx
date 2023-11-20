@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useTransition } from "react";
 import TabButton from "./TabButton";
+import { motion } from "framer-motion";
 
 const TAB_DATA = [
   {
@@ -60,7 +61,12 @@ const AboutSection = () => {
 
   return (
     <section className="text-white font-code">
-      <div className="flex items-center gap-8 py-8 px-4 xl:gap-16 sm:px-16 xl:px-16">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="flex items-center gap-8 py-8 px-4 xl:gap-16 sm:px-16 xl:px-16"
+      >
         <div className="">
           <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
           <p className="text-base lg:text-lg">
@@ -100,7 +106,7 @@ const AboutSection = () => {
             {TAB_DATA.find((t) => t.id === tab)?.content}
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
