@@ -42,8 +42,9 @@ const TAB_DATA = [
   {
     title: "Tools",
     id: "tools",
-    content: Tools.map((tool) => (
+    content: Tools.map((tool, index) => (
       <ToolsItem
+        key={index}
         title={tool.title}
         image={tool.image}
         description={tool.description}
