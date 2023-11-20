@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import ProjectCard from "./ProjectCard";
 import ProjectTag from "./ProjectTag";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 const projectsData = [
   {
@@ -51,6 +51,8 @@ const projectsData = [
 
 const ProjectSection = () => {
   const [tag, setTag] = useState("All");
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   const handleTagChange = (tag) => {
     setTag(tag);
@@ -59,6 +61,11 @@ const ProjectSection = () => {
   const filteredProjects = projectsData.filter((project) =>
     project.tags.includes(tag)
   );
+
+  const cardVariants = {
+    initial: { opacity: 0, y: 50 },
+    animate: { opacity: 1, y: 0 },
+  };
 
   return (
     <motion.section
@@ -84,19 +91,27 @@ const ProjectSection = () => {
           isSelected={tag === "Ai"}
         />
       </div>
-      <div className="grid md:grid-cols-3 gap-8 md:gap-12">
-        {filteredProjects.map((project) => (
-          <ProjectCard
-            key={project.id}
-            title={project.title}
-            description={project.description}
-            imgUrl={project.image}
-            tags={project}
-            gitUrl={project.gitUrl}
-            previewUrl={project.previewUrl}
-          />
+      <ul ref={ref} className="grid md:grid-cols-3 gap-8 md:gap-12">
+        {filteredProjects.map((project, index) => (
+          <motion.li
+            key={index}
+            variants={cardVariants}
+            initial="initial"
+            animate={isInView ? "animate" : "initial"}
+            transition={{ duration: 0.6, delay: index * 0.4 }}
+          >
+            <ProjectCard
+              key={project.id}
+              title={project.title}
+              description={project.description}
+              imgUrl={project.image}
+              tags={project}
+              gitUrl={project.gitUrl}
+              previewUrl={project.previewUrl}
+            />
+          </motion.li>
         ))}
-      </div>
+      </ul>
     </motion.section>
   );
 };
