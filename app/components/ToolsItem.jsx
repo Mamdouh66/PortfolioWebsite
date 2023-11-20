@@ -9,7 +9,7 @@ const ToolsItem = ({ title, image, description, href, alt }) => {
         href={href}
         target="_blank"
         rel="noreferrer"
-        className="border-[0.5px] border-neutral-500 block rounded-2xl my-6"
+        className="border-[0.5px] border-neutral-500 block rounded-2xl my-6 "
       >
         <div className="w-full py-8 text-center bg-neutral-800 rounded-t-2xl">
           <Image
