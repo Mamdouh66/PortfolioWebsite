@@ -59,7 +59,7 @@ const AboutSection = () => {
   };
 
   return (
-    <section className="text-white ">
+    <section className="text-white font-code">
       <div className="flex items-center gap-8 py-8 px-4 xl:gap-16 sm:px-16 xl:px-16">
         <div className="">
           <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
