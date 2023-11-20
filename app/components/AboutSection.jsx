@@ -85,7 +85,7 @@ const AboutSection = () => {
         <div className="w-[120%] mr-2">
           <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
           <p className="text-base lg:text-lg">
-            Currently, I&apos;m pursuing a bachelor's degree in Artificial
+            Currently, I&apos;m pursuing a bachelor&apos;'s degree in Artificial
             Intelligence at Imam Abdulrahman bin Faisal University. I have
             always loved to solve problems and build things,from entrepreneurial
             ventures to software projects. A bonus! I am a history geek.
