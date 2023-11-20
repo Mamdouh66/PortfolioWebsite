@@ -44,12 +44,12 @@ const EmailSection = () => {
       <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-red-900 to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-3/4 -left-4 transform -translate-x-1/2 -translate-1/2"></div>
       <div className="z-10">
         <h5 className="text-xl font-bold text-white my-2">
-          Let &apos;s Connect
+          Let&apos;s Connect
         </h5>
         <p className="text-[#dfdfdf] mb-4 max-w-md">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia
-          temporibus aspernatur ea maiores iusto obcaecati molestiae nihil magni
-          at id?
+          Passionate about building solutions for real-world challenges.
+          I&apos;m always open to new opportunities, so feel free to reach out
+          to me.
         </p>
         <div className="socials flex flex-row gap-2">
           <Link href="https://www.github.com/mamdouh66">
@@ -110,6 +110,7 @@ const EmailSection = () => {
               id="message"
               className="bg-[#18191E] border mb-4 border-[#33353F] placholder-[#9CA2A9] placeholder:italic focus:outline-none focus:border-red-600  text-gray-100 text-sm rounded-lg block w-full py-2.5 px-2"
               placeholder="Winter is coming, we need the best Engineer to help us beat the white walkers. Are you up for the challenge?"
+              rows="5"
             ></textarea>
           </div>
           <button
