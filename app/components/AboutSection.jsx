@@ -2,30 +2,32 @@
 import React, { useState, useTransition } from "react";
 import TabButton from "./TabButton";
 import { motion } from "framer-motion";
+import ToolsItem from "./ToolsItem";
 
+import FastApiIcon from "../../public/tools-icons/fastapi-original.svg";
+import PyTorchIcon from "../../public/tools-icons/pytorch-original.svg";
+
+const Tools = [
+  {
+    title: "FastAPI",
+    image: FastApiIcon,
+    description: "For my backends",
+    href: "https://fastapi.tiangolo.com/",
+    alt: "FastAPI Icon",
+  },
+  {
+    title: "PyTorch",
+    image: PyTorchIcon,
+    description: "For my models",
+    href: "https://pytorch.org/",
+    alt: "PyTorch Icon",
+  },
+];
 const TAB_DATA = [
   {
     title: "Skills",
     id: "skills",
-    content: (
-      <ul className="list-disc pl-2">
-        <li>Node.js</li>
-        <li>JavaScript</li>
-        <li>React</li>
-        <li>Next.js</li>
-        <li>HTML</li>
-      </ul>
-    ),
-  },
-  {
-    title: "Education",
-    id: "education",
-    content: (
-      <ul className="list-disc pl-2">
-        <li>Master of Science in Computer Science</li>
-        <li>Bachelor of Science in Computer Science</li>
-      </ul>
-    ),
+    content: <></>,
   },
   {
     title: "Experience",
@@ -36,6 +38,19 @@ const TAB_DATA = [
         <li>Software Engineer at Facebook</li>
       </ul>
     ),
+  },
+  {
+    title: "Tools",
+    id: "tools",
+    content: Tools.map((tool) => (
+      <ToolsItem
+        title={tool.title}
+        image={tool.image}
+        description={tool.description}
+        href={tool.href}
+        alt={tool.alt}
+      />
+    )),
   },
   {
     title: "Certifications",
@@ -60,21 +75,21 @@ const AboutSection = () => {
   };
 
   return (
-    <section className="text-white font-code">
+    <section className="text-white font-code ">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        className="flex items-center gap-8 py-8 px-4 xl:gap-16 sm:px-16 xl:px-16"
+        className="flex items-center w-3/4 gap-8 py-8 px-4 xl:gap-16 sm:px-16 xl:px-16"
       >
         <div className="">
           <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
           <p className="text-base lg:text-lg">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae
-            mollitia blanditiis cupiditate asperiores autem, animi nesciunt
-            praesentium? Ex assumenda nihil placeat, fugiat incidunt animi
-            libero delectus consequuntur quaerat nostrum, sit natus, possimus
-            quidem vitae itaque in. Natus tenetur expedita pariatur?
+            Currently, I&apos;m pursuing a bachelor's degree in Artificial
+            Intelligence at Imam Abdulrahman bin Faisal University. I have
+            always loved to solve problems and build things, from
+            entrepreneurial ventures to software projects. A bonus! I am a
+            history geek.
           </p>
           <div className="flex flex-row mt-8">
             <TabButton
@@ -84,10 +99,10 @@ const AboutSection = () => {
               Skills
             </TabButton>
             <TabButton
-              selectTab={() => handleTabChange("education")}
-              active={tab === "education"}
+              selectTab={() => handleTabChange("tools")}
+              active={tab === "tools"}
             >
-              Education
+              Tools
             </TabButton>
             <TabButton
               selectTab={() => handleTabChange("experience")}
@@ -102,7 +117,7 @@ const AboutSection = () => {
               Certifications
             </TabButton>
           </div>
-          <div className="mt-8">
+          <div className="mt-8 flex flex-row gap-4">
             {TAB_DATA.find((t) => t.id === tab)?.content}
           </div>
         </div>

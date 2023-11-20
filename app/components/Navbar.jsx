@@ -23,7 +23,7 @@ const navItem = [
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   return (
-    <nav className="fixed top-0 right-0 left-0 z-10 bg-[#323131] bg-opacity-90 font-code">
+    <nav className="fixed top-0 right-0 left-0 z-10 bg-[#181818] bg-opacity-50 font-code">
       <div className="flex flex-wrap items-center justify-between mx-auto px-6 md:px-[7rem] py-2">
         <Link href={"/"} className="text-4xl text-white font-semibold mt-0">
           M76
@@ -39,7 +39,7 @@ const Navbar = () => {
           ) : (
             <button
               onClick={() => setNavbarOpen(true)}
-              className="flex items-center px-3 py-2 border rounded borded-slate-200 text-slate-200 hover:text-white hover:border-white"
+              className="flex items-center px-3 py-2 border  rounded borded-slate-200 text-slate-200 hover:text-white hover:border-white"
             >
               <Bars3Icon className="h-5 w-5" />
             </button>

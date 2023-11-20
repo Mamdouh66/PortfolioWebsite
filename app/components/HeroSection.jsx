@@ -7,14 +7,14 @@ import { motion } from "framer-motion";
 const HeroSection = () => {
   return (
     <section className="py-12 lg:py-32 font-code">
-      <div className="grid grid-cols-1 sm:grid-cols-12">
+      <div className="flex flex-col-reverse sm:grid sm:grid-cols-12">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
           className="col-span-7 place-self-center text-center sm:text-left ml-12"
         >
-          <h1 className="text-white mb-4 text-5xl lg:text-8xl font-extrabold">
+          <h1 className="text-white mb-4 text-4xl lg:text-8xl font-extrabold">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-rose-500 to-pink-400">
               Hello, I&apos;m {""}
             </span>
@@ -35,11 +35,11 @@ const HeroSection = () => {
               repeat={Infinity}
             />
           </h1>
-          <p className="text-white text-base sm:text-lg mb-6 lg:text-xl">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur
-            vitae sapiente temporibus, sit debitis laborum!
+          <p className="text-white text-base sm:text-lg mb-6 lg:text-xl mt-12">
+            I &apos;m an enthusiastic developer who loves to build solutions for
+            real-world challenges.
           </p>
-          <div className="">
+          <div className="mt-12">
             <button className="px-6 py-3 w-full sm:w-fit rounded-full mr-4 bg-gradient-to-br from-red-600 via-rose-500 to-pink-400 hover:bg-slate-200 text-white">
               Hire Me
             </button>
@@ -54,15 +54,15 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className="col-span-5 place-self-center mt-12 lg:mt-0"
+          className="col-span-5 place-self-center mt-0 lg:mt-0"
         >
-          <div className="rounded-full bg-[#252525] w-[250px] h-[250px] lg:w-[350px] lg:h-[350px] relative">
+          <div className="rounded-full bg-black bg-opacity-0 w-[350px] h-[350px] lg:w-[400px] lg:h-[400px] relative">
             <Image
               src="/MyMemoji.png"
               alt="Mamdouh's Memoji"
               className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 rounded"
-              width={300}
-              height={300}
+              width={400}
+              height={400}
             ></Image>
           </div>
         </motion.div>
