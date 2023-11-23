@@ -3,65 +3,145 @@ import React, { useState, useTransition } from "react";
 import TabButton from "./TabButton";
 import { motion } from "framer-motion";
 import ToolsItem from "./ToolsItem";
+import SkillItem from "./SkillItem";
 
 import FastApiIcon from "../../public/tools-icons/fastapi-original.svg";
 import PyTorchIcon from "../../public/tools-icons/pytorch-original.svg";
+import NextJSIcon from "../../public/tools-icons/NextJS-icon.png";
+import SupabaseIcon from "../../public/tools-icons/supabase-icon.svg";
+import PandasIcon from "../../public/tools-icons/pandas-original.svg";
+import PostgresIcon from "../../public/tools-icons/postgresql-original.svg";
+
+import WebIcon from "../../public/skills-icons/Web-Development-Icon.svg";
+import MLIcon from "../../public/skills-icons/Machine-Learning-1.svg";
+import LeadershipIcon from "../../public/skills-icons/Leadership.svg";
+
+const certifications = [
+  {
+    title: "CS50x",
+    description: "Introduction to Computer Science by Harvard University",
+  },
+  {
+    title: "CS50AI",
+    description:
+      "Introduction to Artificial Intelligence by Harvard University",
+  },
+  {
+    title: "Competitve Programming Training",
+    description:
+      "Training on Competitive Programming by CoachAcademy and Ministry of Communications and Information Technology",
+  },
+  {
+    title: "Samsung Innovation Campus - Artificial Intelligence",
+    description: "Training on Artificial Intelligence by Samsung and Misk",
+  },
+];
+
+const skills = [
+  {
+    title: "Web Development",
+    description:
+      "Skilled in developing web applications using ReactJS, NextJS, and FastAPI.",
+    image: WebIcon,
+  },
+  {
+    title: "Machine Learning",
+    description:
+      "Skilled in the workflow of developing Machine Learning & Deep Learning models.",
+    image: MLIcon,
+  },
+  {
+    title: "Leadership",
+    description:
+      "Experienced in leading teams and managing projects during my time with Sanad, AI Club, and Programming Club.",
+    image: LeadershipIcon,
+  },
+];
 
 const Tools = [
   {
     title: "FastAPI",
     image: FastApiIcon,
-    description: "For my backends",
+    description: "For my Backends",
     href: "https://fastapi.tiangolo.com/",
     alt: "FastAPI Icon",
   },
   {
     title: "PyTorch",
     image: PyTorchIcon,
-    description: "For my models",
+    description: "For my Models",
     href: "https://pytorch.org/",
     alt: "PyTorch Icon",
   },
+  {
+    title: "NextJS",
+    image: NextJSIcon,
+    description: "For my Frontends",
+    href: "https://nextjs.org/",
+    alt: "NextJS Icon",
+  },
+  {
+    title: "Supabase",
+    image: SupabaseIcon,
+    description: "For Auth and Database",
+    href: "https://supabase.io/",
+    alt: "Supabase Icon",
+  },
+  {
+    title: "Pandas",
+    image: PandasIcon,
+    description: "Excel is for Boomers",
+    href: "https://pandas.pydata.org/",
+    alt: "Pandas Icon",
+  },
+  {
+    title: "Postgres",
+    image: PostgresIcon,
+    description: "My main Database",
+    href: "https://www.postgresql.org/",
+    alt: "Postgres Icon",
+  },
 ];
+
 const TAB_DATA = [
   {
     title: "Skills",
     id: "skills",
-    content: <></>,
-  },
-  {
-    title: "Experience",
-    id: "experience",
     content: (
-      <ul className="list-disc pl-2">
-        <li>Software Engineer at Google</li>
-        <li>Software Engineer at Facebook</li>
-      </ul>
+      <div className="flex justify-between max-md:flex-wrap gap-7">
+        {skills.map((item, index) => (
+          <SkillItem
+            key={index}
+            title={item.title}
+            description={item.description}
+            icon={item.image}
+          />
+        ))}
+      </div>
     ),
   },
   {
     title: "Tools",
     id: "tools",
-    content: Tools.map((tool, index) => (
-      <ToolsItem
-        key={index}
-        title={tool.title}
-        image={tool.image}
-        description={tool.description}
-        href={tool.href}
-        alt={tool.alt}
-      />
-    )),
+    content: (
+      <div className="grid grid-cols-1  lg:grid-cols-3 sm:grid-cols-2 sm:gap-10">
+        {Tools.map((tool, index) => (
+          <ToolsItem
+            key={index}
+            title={tool.title}
+            image={tool.image}
+            description={tool.description}
+            href={tool.href}
+            alt={tool.alt}
+          />
+        ))}
+      </div>
+    ),
   },
   {
     title: "Certifications",
     id: "certifications",
-    content: (
-      <ul className="list-disc pl-2">
-        <li>Google Cloud Professional Cloud Architect</li>
-        <li>Google Cloud Professional Data Engineer</li>
-      </ul>
-    ),
+    content: <></>,
   },
 ];
 
@@ -81,11 +161,11 @@ const AboutSection = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        className="flex items-center gap-8 py-8 px-4 xl:gap-16 sm:px-16 xl:px-16"
+        className="flex items-center gap-8 py-8 xl:gap-16 sm:px-16 xl:px-16"
       >
         <div className="w-[120%] mr-2">
           <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
-          <p className="text-base lg:text-lg">
+          <p className="text-md lg:text-lg">
             Currently, I&apos;m pursuing a bachelor&apos;s degree in Artificial
             Intelligence at Imam Abdulrahman bin Faisal University. I have
             always loved to solve problems and build things,from entrepreneurial
@@ -105,19 +185,13 @@ const AboutSection = () => {
               Tools
             </TabButton>
             <TabButton
-              selectTab={() => handleTabChange("experience")}
-              active={tab === "experience"}
-            >
-              Experience
-            </TabButton>
-            <TabButton
               selectTab={() => handleTabChange("certifications")}
               active={tab === "certifications"}
             >
               Certifications
             </TabButton>
           </div>
-          <div className="mt-8 flex flex-col lg:flex-row gap-4">
+          <div className="mt-8 ">
             {TAB_DATA.find((t) => t.id === tab)?.content}
           </div>
         </div>
