@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-const ToolsItem = ({ title, image, description, href, alt }) => {
+const ExperinceItem = ({ title, image, description, duration, href, alt }) => {
   return (
     <div>
       <Link
@@ -19,7 +19,8 @@ const ToolsItem = ({ title, image, description, href, alt }) => {
           />
         </div>
         <div className="p-8 py-10">
-          <h1 className="mb-1 font-bold">{title}</h1>
+          <h1 className="mb-1 text-center text-xl">{title}</h1>
+          <h3 className="text-center text-lg text-neutral-500">{duration}</h3>
           <p className="text-neutral-400">{description}</p>
         </div>
       </Link>
@@ -27,4 +28,4 @@ const ToolsItem = ({ title, image, description, href, alt }) => {
   );
 };
 
-export default ToolsItem;
+export default ExperinceItem;

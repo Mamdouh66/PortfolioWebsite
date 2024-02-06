@@ -4,6 +4,7 @@ import TabButton from "./TabButton";
 import { motion } from "framer-motion";
 import ToolsItem from "./ToolsItem";
 import SkillItem from "./SkillItem";
+import ExperinceItem from "./ExperinceItem";
 
 import FastApiIcon from "../../public/tools-icons/fastapi-original.svg";
 import PyTorchIcon from "../../public/tools-icons/pytorch-original.svg";
@@ -11,6 +12,7 @@ import NextJSIcon from "../../public/tools-icons/NextJS-icon.png";
 import SupabaseIcon from "../../public/tools-icons/supabase-icon.svg";
 import PandasIcon from "../../public/tools-icons/pandas-original.svg";
 import PostgresIcon from "../../public/tools-icons/postgresql-original.svg";
+import FathomLogo from "../../public/logos/Fathom.webp";
 
 import WebIcon from "../../public/skills-icons/Web-Development-Icon.svg";
 import MLIcon from "../../public/skills-icons/Machine-Learning-1.svg";
@@ -103,6 +105,18 @@ const Tools = [
   },
 ];
 
+const Experinces = [
+  {
+    title: "Data Scientist",
+    image: FathomLogo,
+    description:
+      "As a Data Scientist, I work on developing Machine Learning models and deploying them as APIs. I also work on developing internal tools for the team.",
+    duration: "1/2/2024 - present",
+    href: "https://fathom.io",
+    alt: "Fathom Logo",
+  },
+];
+
 const TAB_DATA = [
   {
     title: "Skills",
@@ -124,7 +138,7 @@ const TAB_DATA = [
     title: "Tools",
     id: "tools",
     content: (
-      <div className="grid grid-cols-1  lg:grid-cols-3 sm:grid-cols-2 sm:gap-10">
+      <div className="grid grid-cols lg:grid-cols-3 sm:grid-cols-2 sm:gap-10">
         {Tools.map((tool, index) => (
           <ToolsItem
             key={index}
@@ -139,9 +153,23 @@ const TAB_DATA = [
     ),
   },
   {
-    title: "Certifications",
-    id: "certifications",
-    content: <></>,
+    title: "experinces",
+    id: "experinces",
+    content: (
+      <div className="flex flex-col max-w-lg mx-auto lg:max-w-2xl">
+        {Experinces.map((experince, index) => (
+          <ExperinceItem
+            key={index}
+            title={experince.title}
+            image={experince.image}
+            duration={experince.duration}
+            description={experince.description}
+            href={experince.href}
+            alt={experince.alt}
+          />
+        ))}
+      </div>
+    ),
   },
 ];
 
@@ -185,10 +213,10 @@ const AboutSection = () => {
               Tools
             </TabButton>
             <TabButton
-              selectTab={() => handleTabChange("certifications")}
-              active={tab === "certifications"}
+              selectTab={() => handleTabChange("experinces")}
+              active={tab === "experinces"}
             >
-              Certifications
+              Experiences
             </TabButton>
           </div>
           <div className="mt-8 ">
