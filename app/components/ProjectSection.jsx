@@ -13,11 +13,11 @@ const projectsData = [
     id: 1,
     title: "Sanad's Website",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
+      "Made this website for Sanad, an initiative I founded to help students in our university.",
     image: SanadLogo,
     tags: ["All", "Web"],
     gitUrl: "",
-    previewUrl: "https://github.com",
+    previewUrl: "https://coruscating-snickerdoodle-cc3be2.netlify.app/",
   },
   {
     id: 2,
@@ -26,29 +26,28 @@ const projectsData = [
       "I made this website for a hackathon called FastHacks that we organized in our university.",
     image: FastHacksImage,
     tags: ["All", "Web"],
-    gitUrl: "https://github.com",
-    previewUrl: "https://github.com",
+    gitUrl: "https://github.com/Mamdouh66/Hackathon-website",
+    previewUrl: "https://fasthacks-iau.com/",
   },
-  // {
-  //   id: 3,
-  //   title: "Project 3",
-  //   description:
-  //     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-  //   image: "https://random.imagecdn.app/500/140",
-  //   tags: ["All", "Ai"],
-  //   gitUrl: "https://github.com",
-  //   previewUrl: "https://github.com",
-  // },
-  // {
-  //   id: 4,
-  //   title: "Project 4",
-  //   description:
-  //     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-  //   image: "https://random.imagecdn.app/500/150",
-  //   tags: ["All", "Ai"],
-  //   gitUrl: "https://github.com",
-  //   previewUrl: "https://github.com",
-  // },
+  {
+    id: 3,
+    title: "Emails Summarizer",
+    description: "Email Summarizer with GPT and Gmail API.",
+    image: "",
+    tags: ["All", "Ai"],
+    gitUrl: "Email Summarizer with GPT and Gmail API",
+    previewUrl: "",
+  },
+  {
+    id: 4,
+    title: "StorytellerAI",
+    description:
+      "Writing good stories with GPT based on the idea of repititive feedback.",
+    image: "",
+    tags: ["All", "Ai"],
+    gitUrl: "https://github.com/Mamdouh66/StorytellerAI",
+    previewUrl: "",
+  },
 ];
 
 const ProjectSection = () => {
@@ -91,6 +90,11 @@ const ProjectSection = () => {
           onClick={handleTagChange}
           name="Ai"
           isSelected={tag === "Ai"}
+        />
+        <ProjectTag
+          onClick={handleTagChange}
+          name="Random"
+          isSelected={tag === "Random"}
         />
       </div>
       <ul ref={ref} className="grid md:grid-cols-3 gap-8 md:gap-12">
