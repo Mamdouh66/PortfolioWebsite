@@ -18,6 +18,8 @@ import WebIcon from "../../public/skills-icons/Web-Development-Icon.svg";
 import MLIcon from "../../public/skills-icons/Machine-Learning-1.svg";
 import LeadershipIcon from "../../public/skills-icons/Leadership.svg";
 
+import bayanplus from "bayanplus-js";
+
 const certifications = [
   {
     title: "CS50x",
@@ -203,18 +205,21 @@ const AboutSection = () => {
             <TabButton
               selectTab={() => handleTabChange("skills")}
               active={tab === "skills"}
+              onClick={() => bayanplus.event("Skills got clicked")}
             >
               Skills
             </TabButton>
             <TabButton
               selectTab={() => handleTabChange("tools")}
               active={tab === "tools"}
+              onClick={() => bayanplus.event("Tools got clicked")}
             >
               Tools
             </TabButton>
             <TabButton
               selectTab={() => handleTabChange("experinces")}
               active={tab === "experinces"}
+              onClick={() => bayanplus.event("Experinces got clicked")}
             >
               Experiences
             </TabButton>

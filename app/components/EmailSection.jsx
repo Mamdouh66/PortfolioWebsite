@@ -53,13 +53,22 @@ const EmailSection = () => {
           to me.
         </p>
         <div className="socials flex flex-row gap-2">
-          <Link href="https://www.github.com/mamdouh66">
+          <Link
+            href="https://www.github.com/mamdouh66"
+            onClick={() => bayanplus.event("Github got clicked")}
+          >
             <Image src={GithubIcon} alt="Github Icon" />
           </Link>
-          <Link href="https://www.linkedin.com/in/mamdouh-aldhafeeri/">
+          <Link
+            href="https://www.linkedin.com/in/mamdouh-aldhafeeri/"
+            onClick={() => bayanplus.event("Linkedin got clicked")}
+          >
             <Image src={LinkedinIcon} alt="Linkedin Icon" />
           </Link>
-          <Link href="https://twitter.com/MamdouhAI">
+          <Link
+            href="https://twitter.com/MamdouhAI"
+            onClick={() => bayanplus.event("Twitter got clicked")}
+          >
             <Image src={TwitterIcon} alt="Twitter Icon" />
           </Link>
         </div>
@@ -117,6 +126,7 @@ const EmailSection = () => {
           <button
             type="submit"
             className="bg-red-600 hover:bg-red-400 text-white font-medium py-2.5 px-5 rounded-lg w-full"
+            onClick={() => bayanplus.event("Send Message Clicked")}
           >
             Send Message
           </button>
