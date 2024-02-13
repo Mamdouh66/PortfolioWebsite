@@ -7,6 +7,7 @@ import TwitterIcon from "../../public/logos/Twitter-icon.svg";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import bayanplus from "bayanplus-js";
 
 const EmailSection = () => {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
