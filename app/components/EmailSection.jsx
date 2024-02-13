@@ -11,16 +11,37 @@ import bayanplus from "bayanplus-js";
 
 const EmailSection = () => {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formErrors, setFormErrors] = useState({});
+
+  const validateForm = (data) => {
+    const errors = {};
+    if (!data.email) errors.email = "Email is required";
+    else if (!/\S+@\S+\.\S+/.test(data.email))
+      errors.email = "Email is invalid";
+    if (!data.subject) errors.subject = "Subject is required";
+    if (!data.message) errors.message = "Message is required";
+    return errors;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
     const data = {
       email: e.target.email.value,
       subject: e.target.subject.value,
       message: e.target.message.value,
     };
+
+    const errors = validateForm(data);
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      setIsSubmitting(false);
+      return;
+    }
+
     const JSONdata = JSON.stringify(data);
-    const endpoint = "api/send";
+    const endpoint = "/api/send";
     const options = {
       method: "POST",
       headers: {
@@ -28,13 +49,22 @@ const EmailSection = () => {
       },
       body: JSONdata,
     };
-    const response = await fetch(endpoint, options);
-    const resData = await response.json();
-    if (response.status === 200) {
-      console.log("Message sent successfully");
-      setEmailSubmitted(true);
+
+    try {
+      const response = await fetch(endpoint, options);
+      if (response.ok) {
+        console.log("Message sent successfully");
+        setEmailSubmitted(true);
+      } else {
+        console.error("Failed to send message");
+      }
+    } catch (error) {
+      console.error("An error occurred", error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -43,7 +73,6 @@ const EmailSection = () => {
       className="grid md:grid-cols-2 my-12 md:my-12 py-24 gap-4 relative font-code"
       id="contact"
     >
-      <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-red-900 to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-3/4 -left-4 transform -translate-x-1/2 -translate-1/2"></div>
       <div className="z-10">
         <h5 className="text-xl font-bold text-white my-2">
           Let&apos;s Connect
@@ -54,23 +83,47 @@ const EmailSection = () => {
           to me.
         </p>
         <div className="socials flex flex-row gap-2">
-          <Link
-            href="https://www.github.com/mamdouh66"
-            onClick={() => bayanplus.event("Github got clicked")}
-          >
-            <Image src={GithubIcon} alt="Github Icon" />
+          <Link href="https://www.github.com/mamdouh66" legacyBehavior>
+            <a
+              onClick={() => bayanplus.event("Github got clicked")}
+              target="_blank"
+            >
+              <Image
+                src={GithubIcon}
+                alt="Github Icon"
+                width="40"
+                height="40"
+              />
+            </a>
           </Link>
           <Link
             href="https://www.linkedin.com/in/mamdouh-aldhafeeri/"
-            onClick={() => bayanplus.event("Linkedin got clicked")}
+            legacyBehavior
           >
-            <Image src={LinkedinIcon} alt="Linkedin Icon" />
+            <a
+              onClick={() => bayanplus.event("Linkedin got clicked")}
+              target="_blank"
+            >
+              <Image
+                src={LinkedinIcon}
+                alt="Linkedin Icon"
+                width="40"
+                height="40"
+              />
+            </a>
           </Link>
-          <Link
-            href="https://twitter.com/MamdouhAI"
-            onClick={() => bayanplus.event("Twitter got clicked")}
-          >
-            <Image src={TwitterIcon} alt="Twitter Icon" />
+          <Link href="https://twitter.com/MamdouhAI" legacyBehavior>
+            <a
+              onClick={() => bayanplus.event("Twitter got clicked")}
+              target="_blank"
+            >
+              <Image
+                src={TwitterIcon}
+                alt="Twitter Icon"
+                width="40"
+                height="40"
+              />
+            </a>
           </Link>
         </div>
       </div>
@@ -88,29 +141,34 @@ const EmailSection = () => {
               type="email"
               id="email"
               required
-              className=" bg-[#18191E] border mb-4 border-[#33353F] placholder-[#9CA2A9] placeholder:italic focus:outline-none focus:border-red-600  text-gray-100 text-sm rounded-lg block w-full py-2.5 px-2"
+              className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] placeholder:italic focus:outline-none focus:border-red-600 text-gray-100 text-sm rounded-lg block w-full py-2.5 px-2"
               placeholder="JonSnow@winterfell.westros"
             />
+            {formErrors.email && (
+              <p className="text-red-500 text-xs">{formErrors.email}</p>
+            )}
           </div>
           <div className="mb-6">
             <label
-              name="subject"
               htmlFor="subject"
               className="text-white block text-sm font-medium"
             >
               Subject
             </label>
             <input
+              name="subject"
               type="text"
               id="subject"
               required
-              className="bg-[#18191E] border mb-4 border-[#33353F] placholder-[#9CA2A9] placeholder:italic focus:outline-none focus:border-red-600  text-gray-100 text-sm rounded-lg block w-full py-2.5 px-2"
+              className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] placeholder:italic focus:outline-none focus:border-red-600 text-gray-100 text-sm rounded-lg block w-full py-2.5 px-2"
               placeholder="Winter is coming"
             />
+            {formErrors.subject && (
+              <p className="text-red-500 text-xs">{formErrors.subject}</p>
+            )}
           </div>
           <div className="mb-6">
             <label
-              name="message"
               htmlFor="message"
               className="text-white block text-sm mb-2 font-medium"
             >
@@ -119,17 +177,22 @@ const EmailSection = () => {
             <textarea
               name="message"
               id="message"
-              className="bg-[#18191E] border mb-4 border-[#33353F] placholder-[#9CA2A9] placeholder:italic focus:outline-none focus:border-red-600  text-gray-100 text-sm rounded-lg block w-full py-2.5 px-2"
+              required
+              className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] placeholder:italic focus:outline-none focus:border-red-600 text-gray-100 text-sm rounded-lg block w-full py-2.5 px-2"
               placeholder="Winter is coming, we need the best Engineer to help us beat the white walkers. Are you up for the challenge?"
               rows="5"
             ></textarea>
+            {formErrors.message && (
+              <p className="text-red-500 text-xs">{formErrors.message}</p>
+            )}
           </div>
           <button
             type="submit"
+            disabled={isSubmitting}
             className="bg-red-600 hover:bg-red-400 text-white font-medium py-2.5 px-5 rounded-lg w-full"
             onClick={() => bayanplus.event("Send Message Clicked")}
           >
-            Send Message
+            {isSubmitting ? "Sending..." : "Send Message"}
           </button>
           {emailSubmitted && (
             <p className="text-green-500 text-sm mt-2">
