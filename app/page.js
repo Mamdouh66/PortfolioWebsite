@@ -14,7 +14,7 @@ const projectId = process.env.NEXT_PUBLIC_PROJECT_ID;
 export default function Home() {
   useEffect(() => {
     bayanplus.init({
-      projectId: projectId,
+      projectId: "JoWA0MPD",
       isDev: false,
     });
   }, []);
