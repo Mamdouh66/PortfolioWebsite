@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
+    "bayanplus-js": "^2.2.0",
     "framer-motion": "^10.16.5",
     "next": "14.0.3",
     "react": "^18",
