@@ -41,13 +41,13 @@ const HeroSection = () => {
           </p>
           <div className="mt-12">
             <button
-              onClick={bayanplus.event("Contact Me Clicked")}
+              onClick={() => bayanplus.event("Contact Me Clicked")}
               className="px-6 py-3 w-full sm:w-fit rounded-full mr-4 bg-gradient-to-br from-red-600 via-rose-500 to-pink-400 hover:bg-slate-200 text-white"
             >
               <Link href="#contact">Contact Me</Link>
             </button>
             <button
-              onClick={bayanplus.event("Download CV Clicked")}
+              onClick={() => bayanplus.event("Download CV Clicked")}
               className="px-0.5 py-0.5 w-full sm:w-fit rounded-full bg-gradient-to-br from-red-600 via-rose-500 to-pink-400  bg-transparent hover:bg-[#343434] text-white mt-4"
             >
               <span className="block bg-[#252525] hover:bg-[#444242] rounded-full px-5 py-2">
