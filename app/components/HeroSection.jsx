@@ -64,7 +64,7 @@ const HeroSection = () => {
           transition={{ duration: 1 }}
           className="col-span-5 place-self-center mt-0 lg:mt-0"
         >
-          <div className="rounded-full bg-black bg-gradient-to-br from-black via-stone-800 to-neutral-800 w-[350px] h-[350px] lg:w-[400px] lg:h-[400px] relative">
+          <div className="rounded-full w-[350px] h-[350px] lg:w-[400px] lg:h-[400px] relative">
             <Image
               src="/MyMemoji.png"
               alt="Mamdouh's Memoji"
