@@ -109,10 +109,10 @@ const Tools = [
 
 const Experinces = [
   {
-    title: "Data Scientist",
+    title: "Software Engineer",
     image: FathomLogo,
     description:
-      "As a Data Scientist, I work on developing Machine Learning models and deploying them as APIs. I also work on developing internal tools for the team.",
+      "As a Software Engineer in the Data Science team, I work on various projects that involve the whole Machine Learning lifecycle, from data collection to deployment and monitoring. I also work planning, implementing and testing new features for the Fathom platform.",
     duration: "1/2/2024 - present",
     href: "https://fathom.io",
     alt: "Fathom Logo",
